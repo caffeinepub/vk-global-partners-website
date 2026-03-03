@@ -7,9 +7,9 @@ import {
   AlertCircle,
   CheckCircle2,
   Loader2,
+  Mail,
   MapPin,
   MessageCircle,
-  Phone,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useActor } from "../hooks/useActor";
@@ -18,7 +18,6 @@ interface FormState {
   name: string;
   companyName: string;
   email: string;
-  phone: string;
   requirement: string;
 }
 
@@ -26,7 +25,6 @@ const initialForm: FormState = {
   name: "",
   companyName: "",
   email: "",
-  phone: "",
   requirement: "",
 };
 
@@ -49,7 +47,7 @@ export default function Contact() {
     }
     meta.setAttribute(
       "content",
-      "Contact VK Global Partners in Noida for procurement and sourcing inquiries. Call +91 9220406592 or fill our inquiry form.",
+      "Contact VK Global Partners in Noida for procurement and sourcing inquiries. Fill our inquiry form or email us directly.",
     );
   }, []);
 
@@ -63,7 +61,6 @@ export default function Contact() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
       newErrors.email = "Please enter a valid email";
     }
-    if (!form.phone.trim()) newErrors.phone = "Phone number is required";
     if (!form.requirement.trim())
       newErrors.requirement = "Please describe your requirement";
     setErrors(newErrors);
@@ -94,7 +91,7 @@ export default function Contact() {
         form.name,
         form.companyName,
         form.email,
-        form.phone,
+        "",
         form.requirement,
       );
       if (success) {
@@ -186,11 +183,8 @@ export default function Contact() {
                         Something went wrong
                       </p>
                       <p className="text-red-700 text-sm mt-0.5">
-                        Please try again or contact us directly at{" "}
-                        <a href="tel:+919220406592" className="underline">
-                          +91 9220406592
-                        </a>
-                        .
+                        Please try again or email us directly at
+                        Im20vish@gmail.com.
                       </p>
                     </div>
                   </div>
@@ -252,58 +246,28 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  {/* Email & Phone row */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div className="space-y-1.5">
-                      <Label
-                        htmlFor="email"
-                        className="text-sm font-medium text-foreground"
-                      >
-                        Email Address{" "}
-                        <span className="text-destructive">*</span>
-                      </Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={form.email}
-                        onChange={handleChange}
-                        placeholder="rajesh@example.com"
-                        autoComplete="email"
-                        data-ocid="contact.email.input"
-                        className={errors.email ? "border-destructive" : ""}
-                      />
-                      {errors.email && (
-                        <p className="text-destructive text-xs">
-                          {errors.email}
-                        </p>
-                      )}
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <Label
-                        htmlFor="phone"
-                        className="text-sm font-medium text-foreground"
-                      >
-                        Phone Number <span className="text-destructive">*</span>
-                      </Label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={form.phone}
-                        onChange={handleChange}
-                        placeholder="+91 98765 43210"
-                        autoComplete="tel"
-                        data-ocid="contact.phone.input"
-                        className={errors.phone ? "border-destructive" : ""}
-                      />
-                      {errors.phone && (
-                        <p className="text-destructive text-xs">
-                          {errors.phone}
-                        </p>
-                      )}
-                    </div>
+                  {/* Email */}
+                  <div className="space-y-1.5">
+                    <Label
+                      htmlFor="email"
+                      className="text-sm font-medium text-foreground"
+                    >
+                      Email Address <span className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="rajesh@example.com"
+                      autoComplete="email"
+                      data-ocid="contact.email.input"
+                      className={errors.email ? "border-destructive" : ""}
+                    />
+                    {errors.email && (
+                      <p className="text-destructive text-xs">{errors.email}</p>
+                    )}
                   </div>
 
                   {/* Requirement */}
@@ -356,26 +320,26 @@ export default function Contact() {
 
             {/* ── Contact Info ── */}
             <div className="lg:col-span-2 space-y-6">
-              {/* Phone */}
+              {/* Email */}
               <div className="bg-card rounded-xl border border-border p-6">
                 <div className="flex items-center gap-4 mb-3">
-                  <div className="w-12 h-12 rounded-xl brand-gradient flex items-center justify-center">
-                    <Phone className="w-5 h-5 text-white" />
+                  <div className="w-12 h-12 rounded-xl bg-[oklch(0.22_0.09_255)] flex items-center justify-center">
+                    <Mail className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
-                      Phone
+                      Email
                     </p>
                     <a
-                      href="tel:+919220406592"
-                      className="font-display font-bold text-xl text-foreground hover:text-[oklch(0.52_0.22_255)] transition-colors"
+                      href="mailto:Im20vish@gmail.com"
+                      className="font-medium text-foreground hover:text-[oklch(0.52_0.22_255)] transition-colors"
                     >
-                      +91 9220406592
+                      Im20vish@gmail.com
                     </a>
                   </div>
                 </div>
                 <p className="text-muted-foreground text-sm">
-                  Available Monday–Saturday, 9 AM–7 PM IST
+                  We respond within 24 business hours
                 </p>
               </div>
 

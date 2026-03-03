@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Globe, Mail, MapPin, Phone } from "lucide-react";
+import { Globe, Mail, MapPin } from "lucide-react";
 
 const quickLinks = [
   { label: "Home", to: "/" as const, ocid: "footer.home.link" },
@@ -48,15 +48,6 @@ export default function Footer() {
               businesses.
             </p>
             <div className="space-y-3">
-              <a
-                href="tel:+919220406592"
-                className="flex items-center gap-3 text-sm text-white/80 hover:text-white transition-colors group"
-              >
-                <div className="w-8 h-8 rounded-md bg-white/10 flex items-center justify-center group-hover:bg-[oklch(0.52_0.22_255)] transition-colors">
-                  <Phone className="w-3.5 h-3.5" />
-                </div>
-                +91 9220406592
-              </a>
               <div className="flex items-start gap-3 text-sm text-white/80">
                 <div className="w-8 h-8 rounded-md bg-white/10 flex items-center justify-center mt-0.5 flex-shrink-0">
                   <MapPin className="w-3.5 h-3.5" />
@@ -75,6 +66,15 @@ export default function Footer() {
                   <Mail className="w-3.5 h-3.5" />
                 </div>
                 info@vkglobalpartners.com
+              </a>
+              <a
+                href="mailto:Im20vish@gmail.com"
+                className="flex items-center gap-3 text-sm text-white/80 hover:text-white transition-colors group"
+              >
+                <div className="w-8 h-8 rounded-md bg-white/10 flex items-center justify-center group-hover:bg-[oklch(0.52_0.22_255)] transition-colors">
+                  <Mail className="w-3.5 h-3.5" />
+                </div>
+                Im20vish@gmail.com
               </a>
             </div>
           </div>

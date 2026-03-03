@@ -361,7 +361,7 @@ export default function Home() {
                 {[
                   { n: "500+", label: "Verified Suppliers" },
                   { n: "200+", label: "Projects Delivered" },
-                  { n: "10+", label: "Years Experience" },
+                  { n: "4+", label: "Years Experience" },
                   { n: "100%", label: "Transparency" },
                 ].map((s) => (
                   <div
