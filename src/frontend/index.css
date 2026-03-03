@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Fonts ───────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans-Variable.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Design Tokens ────────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Page background: very light blue-white */
+    --background: 0.98 0.005 240;
+    --foreground: 0.18 0.03 250;
+
+    /* Card surfaces */
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.03 250;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.03 250;
+
+    /* Primary: deep navy blue */
+    --primary: 0.28 0.09 255;
+    --primary-foreground: 0.99 0 0;
+
+    /* Secondary: light blue surface */
+    --secondary: 0.94 0.03 240;
+    --secondary-foreground: 0.28 0.09 255;
+
+    /* Muted surfaces */
+    --muted: 0.95 0.01 240;
+    --muted-foreground: 0.50 0.04 250;
+
+    /* Accent: electric blue */
+    --accent: 0.52 0.22 255;
+    --accent-foreground: 0.99 0 0;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.02 240;
+    --input: 0.88 0.02 240;
+    --ring: 0.52 0.22 255;
+
+    /* Brand-specific tokens */
+    --brand-navy: 0.22 0.09 255;
+    --brand-navy-deep: 0.16 0.07 260;
+    --brand-blue: 0.52 0.22 255;
+    --brand-blue-light: 0.62 0.20 255;
+    --brand-slate: 0.30 0.04 250;
+    --brand-slate-mid: 0.45 0.03 250;
+
+    --chart-1: 0.52 0.22 255;
+    --chart-2: 0.60 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    --sidebar: 0.98 0.005 240;
+    --sidebar-foreground: 0.18 0.03 250;
+    --sidebar-primary: 0.28 0.09 255;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.94 0.03 240;
+    --sidebar-accent-foreground: 0.28 0.09 255;
+    --sidebar-border: 0.88 0.02 240;
+    --sidebar-ring: 0.52 0.22 255;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "General Sans", system-ui, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Cabinet Grotesk", system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* ── Utility classes ──────────────────────────────────────────────────────── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .brand-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.16 0.07 260) 0%,
+      oklch(0.22 0.09 255) 55%,
+      oklch(0.30 0.12 255) 100%
+    );
+  }
+
+  .brand-gradient-subtle {
+    background: linear-gradient(
+      160deg,
+      oklch(0.97 0.01 240) 0%,
+      oklch(0.94 0.03 255) 100%
+    );
+  }
+
+  /* ── FIX 1: Richer hero overlay with directional drama ── */
+  .hero-overlay {
+    background:
+      linear-gradient(
+        105deg,
+        oklch(0.11 0.07 262 / 0.97) 0%,
+        oklch(0.15 0.08 258 / 0.88) 40%,
+        oklch(0.18 0.08 255 / 0.60) 70%,
+        oklch(0.20 0.06 252 / 0.20) 100%
+      );
+  }
+
+  .nav-blur {
+    backdrop-filter: blur(16px) saturate(200%);
+    -webkit-backdrop-filter: blur(16px) saturate(200%);
+  }
+
+  /* Diagonal hash pattern for dark sections (subtle) */
+  .section-dot-pattern {
+    background-image:
+      radial-gradient(circle, oklch(0.52 0.22 255 / 0.12) 1.5px, transparent 1.5px);
+    background-size: 32px 32px;
+  }
+
+  /* Fine grid lines for hero depth */
+  .hero-grid-pattern {
+    background-image:
+      linear-gradient(oklch(1 0 0 / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(1 0 0 / 0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* ── FIX 2: Premium card elevation system ── */
+  /* Replaces flat border-only cards with layered depth */
+  .card-premium {
+    background: linear-gradient(
+      160deg,
+      oklch(1 0 0) 0%,
+      oklch(0.985 0.008 250) 100%
+    );
+    border: 1px solid oklch(0.91 0.015 250);
+    box-shadow:
+      0 1px 2px oklch(0.22 0.09 255 / 0.06),
+      0 4px 12px oklch(0.22 0.09 255 / 0.07),
+      inset 0 1px 0 oklch(1 0 0 / 0.8);
+    transition: transform 0.22s cubic-bezier(0.34, 1.2, 0.64, 1),
+                box-shadow 0.22s ease,
+                border-color 0.18s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Left accent line reveal on hover — procurement "document" feel */
+  .card-premium::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12%;
+    bottom: 12%;
+    width: 3px;
+    background: linear-gradient(
+      to bottom,
+      oklch(0.52 0.22 255 / 0) 0%,
+      oklch(0.52 0.22 255 / 1) 40%,
+      oklch(0.52 0.22 255 / 1) 60%,
+      oklch(0.52 0.22 255 / 0) 100%
+    );
+    border-radius: 0 2px 2px 0;
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 0.2s cubic-bezier(0.34, 1.2, 0.64, 1);
+  }
+
+  .card-premium:hover {
+    transform: translateY(-5px);
+    border-color: oklch(0.72 0.12 255);
+    box-shadow:
+      0 2px 4px oklch(0.22 0.09 255 / 0.08),
+      0 12px 32px oklch(0.22 0.09 255 / 0.16),
+      0 24px 48px oklch(0.22 0.09 255 / 0.08),
+      inset 0 1px 0 oklch(1 0 0);
+  }
+
+  .card-premium:hover::before {
+    transform: scaleY(1);
+  }
+
+  /* Legacy card-hover kept for non-premium cards */
+  .card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px oklch(0.22 0.09 255 / 0.15);
+  }
+
+  /* ── Hero display type helpers ── */
+  .hero-display {
+    font-family: "Cabinet Grotesk", system-ui, sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.92;
+  }
+
+  /* Stat counter surface */
+  .stat-surface {
+    background: oklch(1 0 0 / 0.10);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(1 0 0 / 0.18);
+  }
+}
